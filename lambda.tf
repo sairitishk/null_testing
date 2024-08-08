@@ -11,7 +11,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 
 resource "aws_lambda_function" "test_lambda" {
   filename      = "${path.module}/code.zip"
-  function_name = "HelloWorld"
+  function_name = "HelloWorld2"
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "index.handler"
   # source_code_hash = data.archive_file.lambda.output_base64sha256
