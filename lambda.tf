@@ -52,27 +52,27 @@ resource "aws_lambda_function" "test_lambda" {
 }
 
 
-resource "null_resource" "invoke_lambda" {
-  triggers = {
-    always_run = "${timestamp()}"
-  }
+# resource "null_resource" "invoke_lambda" {
+#   triggers = {
+#     always_run = "${timestamp()}"
+#   }
 
-  provisioner "local-exec" {
-    command = <<EOT
-      aws lambda invoke \
-        --function-name ${aws_lambda_function.test_lambda.function_name} \
-        --cli-binary-format raw-in-base64-out \
-        --payload '{"key1": "value1"}' \
-        response.json
-      cat response.json
-      EOT
- }
-}
+#   provisioner "local-exec" {
+#     command = <<EOT
+#       aws lambda invoke \
+#         --function-name ${aws_lambda_function.test_lambda.function_name} \
+#         --cli-binary-format raw-in-base64-out \
+#         --payload '{"key1": "value1"}' \
+#         response.json
+#       cat response.json
+#       EOT
+#  }
+# }
 
-resource "aws_lambda_permission" "allow_jenkins_invoke" {
-  statement_id  = "AllowJenkinsInvoke"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.test_lambda.function_name
-  principal     = "058264252836"
-#   source_arn    = "arn:aws:iam::058264252836:role/Admin_Acess_Role_EC2" // Replace with your IAM role ARN
-}
+# resource "aws_lambda_permission" "allow_jenkins_invoke" {
+#   statement_id  = "AllowJenkinsInvoke"
+#   action        = "lambda:InvokeFunction"
+#   function_name = aws_lambda_function.test_lambda.function_name
+#   principal     = "058264252836" // is jenkins is in ec2, can give the iam role given to ec2, or can give ec2.amazonaws.com for ec2 as a whole
+# #   source_arn    = "arn:aws:iam::058264252836:role/Admin_Acess_Role_EC2" // Replace with your IAM role ARN
+# }
