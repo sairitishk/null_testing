@@ -64,6 +64,7 @@ resource "null_resource" "invoke_lambda" {
         --cli-binary-format raw-in-base64-out \
         --payload '{"key1": "value1"}' \
         response.json
+      cat response.json
       EOT
  }
 }
