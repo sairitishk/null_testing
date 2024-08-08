@@ -1,5 +1,5 @@
 resource "aws_iam_role" "iam_for_lambda" {
-  name               = "iam_for_lambda_null_invoke"
+  name               = "iam_for_lambda_null_invoke_delete_others"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
