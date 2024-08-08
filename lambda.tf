@@ -73,6 +73,6 @@ resource "aws_lambda_permission" "allow_jenkins_invoke" {
   statement_id  = "AllowJenkinsInvoke"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.test_lambda.function_name
-  principal     = "ec2.amazonaws.com"
+  principal     = "058264252836"
 #   source_arn    = "arn:aws:iam::058264252836:role/Admin_Acess_Role_EC2" // Replace with your IAM role ARN
 }
