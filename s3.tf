@@ -4,6 +4,9 @@ resource "aws_s3_bucket" "example" {
   tags = {
     Name        = "My bucket"
   }
+  lifecycle {
+    ignore_changes = [ bucket ]
+  }
 }
 
 
