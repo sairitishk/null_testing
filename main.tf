@@ -13,8 +13,3 @@ resource "aws_instance" "example" {
     Name = "Jenkins-Server"
   }
 }
-
-
-module "lambda" {
-  source = "./modules/lambda"
-}
